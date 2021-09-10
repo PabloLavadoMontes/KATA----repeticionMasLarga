@@ -14,7 +14,7 @@ letraRepetida ++
 nuevoArray.push(letraRepetida + ++)
 longestRepetition("sdgvaasdvfdeerrrfsssssdzz") => ["s", 5]; */
 
-import {longestRepetition, stringToArray, getBiggestNumber} from "../src/index"
+import {longestRepetition, stringToArray, countRepetitions, filterRepeatedLetters} from "../src/index"
 
 // longestRepetition:
 test("Devuelve el caracter que más se repite y su cantidad", ()=> {
@@ -52,19 +52,37 @@ test("Transforma un string en varias letras dentro de un array que devuelve", ()
 });
 
 
-// getBiggestNumber:
-test("Devuelve el número mayor de un array formado por strings y numbers", ()=> {
-    expect(getBiggestNumber(["b", "a", "a", 5, "d", 2])).toBe(5);
+// countRepetitions:
+test("Devuelve el número de veces que se repite un elemento dentro de un array", ()=> {
+    expect(countRepetitions(["z", 1, "z", 2, "j", 3, "r", 2, "y", 6, "b", 3], "z")).toBe(2);
 });
-test("Devuelve el número mayor de un array formado por strings y numbers", ()=> {
-    expect(getBiggestNumber(["c", 6, "q", 5, "p", 5, "s", 10])).toBe(10);
+test("Devuelve el número de veces que se repite un elemento dentro de un array", ()=> {
+    expect(countRepetitions([], "s")).toBe(0);
 });
-test("Devuelve el número mayor de un array formado por strings y numbers", ()=> {
-    expect(getBiggestNumber(["s", 2, "a", 5, "d", 2])).toBe(5);
+test("Devuelve el número de veces que se repite un elemento dentro de un array", ()=> {
+    expect(countRepetitions(["x", 2, "z", 2, "j", 3, "r", 2, "y", 6, "b", 3], 2)).toBe(3);
 });
-test("Devuelve el número mayor de un array formado por strings y numbers", ()=> {
-    expect(getBiggestNumber(["x", 22, "q", 1, "f", 22, "e", 0])).toBe(22);
+test("Devuelve el número de veces que se repite un elemento dentro de un array", ()=> {
+    expect(countRepetitions(["p", "a", 0, "h"], "h")).toBe(1);
 });
-test("Devuelve el número mayor de un array formado por strings y numbers", ()=> {
-    expect(getBiggestNumber(["z", 1, "z", 2, "j", 3, "r", 2, "y", 6, "b", 3])).toBe(6);
+test("Devuelve el número de veces que se repite un elemento dentro de un array", ()=> {
+    expect(countRepetitions([], "")).toBe(0);
+});
+
+
+// filterRepeatedLetters:
+test("Devuelve un array con las letras que se repiten dentro del mismo", ()=> {
+    expect(filterRepeatedLetters(["a", "b", "c", "a", "d", "w"])).toStrictEqual(["a"]);
+});
+test("Devuelve un array con las letras que se repiten dentro del mismo", ()=> {
+    expect(filterRepeatedLetters(["a", "b", "c", "d", "w"])).toStrictEqual([]);
+});
+test("Devuelve un array con las letras que se repiten dentro del mismo", ()=> {
+    expect(filterRepeatedLetters(["b", "a", "c", "a", "3", "b"])).toStrictEqual(["b", "a"]);
+})
+test("Devuelve un array con las letras que se repiten dentro del mismo", ()=> {
+    expect(filterRepeatedLetters(["a", "b", "c", "1", "d", "1"])).toStrictEqual(["1"]);
+});
+test("Devuelve un array con las letras que se repiten dentro del mismo", ()=> {
+    expect(filterRepeatedLetters(["a", "b", "c", "e", "d", "w"])).toStrictEqual([]);
 });
